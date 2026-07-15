@@ -1,0 +1,26 @@
+﻿<Application
+    x:Class="BMS_Clone.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:BMS_Clone.Converters"
+    xmlns:local="clr-namespace:BMS_Clone"
+    StartupUri="Views/MainWindow.xaml">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <!--  Converters  -->
+            <converter:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter" />
+
+            <!--  Styles  -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/StyleTitle.xaml" />
+                <ResourceDictionary Source="/Styles/SidebarButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

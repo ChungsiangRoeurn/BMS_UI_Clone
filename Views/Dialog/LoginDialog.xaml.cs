@@ -1,4 +1,5 @@
-﻿using BMS_Clone.ViewModels;
+﻿using BMS_Clone.Services;
+using BMS_Clone.ViewModels;
 using System.Windows;
 
 namespace BMS_Clone.Views.Dialog
@@ -20,6 +21,25 @@ namespace BMS_Clone.Views.Dialog
             PasswordBox.PasswordChanged += PasswordBox_PasswordChanged;
         }
 
+        private bool isWarningShown = false;
+
+        public void LoginDialog_Deactivated(object sender, EventArgs e)
+        {
+            if (isWarningShown)
+                return;
+            
+            isWarningShown = true;
+
+            ToastService.Warning(
+                "Login is required"
+            );
+
+            Dispatcher.BeginInvoke(() =>
+            {
+                isWarningShown = false;
+            });
+        }
+
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is LoginViewModel vm)
@@ -28,9 +48,7 @@ namespace BMS_Clone.Views.Dialog
 
         private void OnLoginSuccess()
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-
+            DialogResult = true;
             Close();
         }
     }

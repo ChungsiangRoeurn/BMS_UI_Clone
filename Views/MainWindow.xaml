@@ -283,7 +283,7 @@
 
                         <!--  Logout Area  -->
                         <Border Grid.Row="2">
-                            <Button Style="{StaticResource SidebarButtonStyle}">
+                            <Button Command="{Binding LogoutCommand}" Style="{StaticResource SidebarButtonStyle}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial
                                         Width="22"
@@ -329,34 +329,70 @@
 
                     <DockPanel>
                         <Menu Height="30" DockPanel.Dock="Top">
-                            <MenuItem Header="_File">
-                                <MenuItem Header="_New" />
-                                <MenuItem Header="_Open" />
-                                <Separator />
-                                <MenuItem Header="_Exit" />
+
+                            <MenuItem Header="File" Style="{StaticResource TopMenuItemStyle}">
+
+                                <MenuItem
+                                    Command="{Binding LogoutCommand}"
+                                    Header="Logout"
+                                    Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem
+                                    Command="{Binding CloseCommand}"
+                                    Header="Close"
+                                    Style="{StaticResource TopMenuItemStyle}" />
+
                             </MenuItem>
-                            <MenuItem Header="_User">
-                                <MenuItem Header="Cu_t" />
-                                <MenuItem Header="_Copy" />
-                                <MenuItem Header="_Paste" />
+
+
+                            <MenuItem Header="User" Style="{StaticResource TopMenuItemStyle}">
+
+                                <MenuItem Header="Cut" Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem Header="Copy" Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem Header="Paste" Style="{StaticResource TopMenuItemStyle}" />
+
                             </MenuItem>
-                            <MenuItem Header="_Device">
-                                <MenuItem Header="All Meters" />
+
+
+                            <MenuItem Header="Device" Style="{StaticResource TopMenuItemStyle}">
+
+                                <MenuItem Header="All Meters" Style="{StaticResource TopMenuItemStyle}" />
+
                             </MenuItem>
-                            <MenuItem Header="_Property">
-                                <MenuItem Header="All Building" />
-                                <MenuItem Header="Create Building" />
+
+
+                            <MenuItem Header="Property" Style="{StaticResource TopMenuItemStyle}">
+
+                                <MenuItem Header="All Building" Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem Header="Create Building" Style="{StaticResource TopMenuItemStyle}" />
+
                             </MenuItem>
-                            <MenuItem Header="_Tanent">
-                                <MenuItem Header="All Tanent" />
-                                <MenuItem Header="Create Tanent" />
-                                <MenuItem Header="Modify Tanent" />
-                                <MenuItem Header="Low Balance Warning" />
+
+
+                            <MenuItem Header="Tanent" Style="{StaticResource TopMenuItemStyle}">
+
+                                <MenuItem Header="All Tanent" Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem Header="Create Tanent" Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem Header="Modify Tanent" Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem Header="Low Balance Warning" Style="{StaticResource TopMenuItemStyle}" />
+
                             </MenuItem>
-                            <MenuItem Header="_Help">
-                                <MenuItem Header="All Building" />
-                                <MenuItem Header="Create Building" />
+
+
+                            <MenuItem Header="Help" Style="{StaticResource TopMenuItemStyle}">
+
+                                <MenuItem Header="All Building" Style="{StaticResource TopMenuItemStyle}" />
+
+                                <MenuItem Header="Create Building" Style="{StaticResource TopMenuItemStyle}" />
+
                             </MenuItem>
+
                         </Menu>
 
                         <Grid x:Name="MainContent">

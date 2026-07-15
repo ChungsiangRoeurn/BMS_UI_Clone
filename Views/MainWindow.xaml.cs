@@ -7,7 +7,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Threading;
 
 namespace BMS_Clone.Views
-{ 
+{
     public partial class MainWindow : Window
     {
         private DispatcherTimer timer;
@@ -33,13 +33,27 @@ namespace BMS_Clone.Views
         }
 
 
+        //private void Timer_Tick(object? sender, EventArgs e)
+        //{
+        //    timer.Stop();
+
+        //    ShowBlur();
+
+        //    LoginDialog loginDialog = new LoginDialog
+        //    {
+        //        Owner = this
+        //    };
+
+        //    loginDialog.ShowDialog();
+
+        //    HideBlur();
+        //}
+
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            timer.Stop(); 
+            timer.Stop();
 
-            LoginDialog loginDialog = new LoginDialog();
-
-            loginDialog.ShowDialog();
+            ShowLogin();
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
@@ -79,7 +93,7 @@ namespace BMS_Clone.Views
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Application.Current.Shutdown();
         }
 
         public void ShowOverlay()
@@ -128,6 +142,20 @@ namespace BMS_Clone.Views
             MainContent.Effect = null;
 
             HideOverlay();
+        }
+
+        public void ShowLogin()
+        {
+            ShowBlur();
+
+            LoginDialog loginDialog = new LoginDialog()
+            {
+                Owner = this
+            };
+
+            loginDialog.ShowDialog();
+
+            HideBlur();
         }
     }
 }

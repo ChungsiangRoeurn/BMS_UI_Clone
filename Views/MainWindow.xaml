@@ -5,11 +5,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:viewmodels="clr-namespace:BMS_Clone.ViewModels"
-    Width="800"
-    Height="1000"
+    Width="1300"
+    Height="800"
     Background="#261F1F"
     ResizeMode="NoResize"
-    WindowState="Maximized"
+    WindowStartupLocation="CenterScreen"
     WindowStyle="None">
 
     <Border BorderBrush="Yellow" BorderThickness="0.5">

@@ -7,13 +7,158 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    Background="#261F1F"
     mc:Ignorable="d">
-    <Grid>
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="30"
+
+    <Grid Margin="20">
+
+        <DataGrid
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            AutoGenerateColumns="False"
+            Background="Transparent"
+            BorderThickness="0"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserReorderColumns="False"
+            CanUserResizeColumns="False"
+            CanUserResizeRows="False"
+            CanUserSortColumns="True"
             Foreground="White"
-            Text="Monitor Meter Page" />
+            GridLinesVisibility="Horizontal"
+            HeadersVisibility="Column"
+            HorizontalGridLinesBrush="#1AFFFFFF"
+            ItemsSource="{Binding Users}"
+            RowBackground="Transparent"
+            ScrollViewer.CanContentScroll="True"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            SelectedItem="{Binding SelectedUser, Mode=TwoWay}"
+            SelectionMode="Single"
+            SelectionUnit="FullRow">
+
+            <!--  Shared Element Style for Centering Text in Columns  -->
+            <DataGrid.Resources>
+                <Style x:Key="CenterTextColumnStyle" TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                </Style>
+            </DataGrid.Resources>
+
+            <!--  Columns  -->
+            <DataGrid.Columns>
+
+                <DataGridTextColumn
+                    Width="60"
+                    Binding="{Binding Id}"
+                    ElementStyle="{StaticResource CenterTextColumnStyle}"
+                    Header="ID" />
+
+                <DataGridTextColumn
+                    Width="3*"
+                    Binding="{Binding Username}"
+                    ElementStyle="{StaticResource CenterTextColumnStyle}"
+                    Header="Username" />
+
+                <DataGridTextColumn
+                    Width="4*"
+                    Binding="{Binding Email}"
+                    ElementStyle="{StaticResource CenterTextColumnStyle}"
+                    Header="Email" />
+
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding Role}"
+                    ElementStyle="{StaticResource CenterTextColumnStyle}"
+                    Header="Role" />
+
+                <DataGridTextColumn
+                    Width="3*"
+                    Binding="{Binding Role}"
+                    ElementStyle="{StaticResource CenterTextColumnStyle}"
+                    Header="Status" />
+
+            </DataGrid.Columns>
+
+
+            <!--  Header Style  -->
+            <DataGrid.ColumnHeaderStyle>
+
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Height" Value="45" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="#CCCCCC" />
+                    <!--  Dimmed for contrast  -->
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <Setter Property="BorderBrush" Value="#444444" />
+                </Style>
+
+            </DataGrid.ColumnHeaderStyle>
+
+
+            <!--  Row Style  -->
+            <DataGrid.RowStyle>
+
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="45" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="BorderThickness" Value="0" />
+
+                    <Style.Triggers>
+                        <!--  Hover  -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#362F2F" />
+                        </Trigger>
+                        <!--  Selected  -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#5E2B2B" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+            </DataGrid.RowStyle>
+
+
+            <!--  Cell Style  -->
+            <DataGrid.CellStyle>
+
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Padding" Value="10,0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <!--  Removes default dotted focus border  -->
+
+                    <!--  Simplified template to ensure clean background rendering  -->
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border
+                                    Padding="{TemplateBinding Padding}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="0">
+                                    <ContentPresenter VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <!--  Prevent cell selection from overriding row selection color  -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+            </DataGrid.CellStyle>
+
+        </DataGrid>
+
     </Grid>
 </UserControl>

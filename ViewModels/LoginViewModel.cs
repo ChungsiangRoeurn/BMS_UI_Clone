@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace BMS_Clone.ViewModels
 {
@@ -21,6 +22,15 @@ namespace BMS_Clone.ViewModels
         public event Action? LoginSuccess;
 
         public event Action? RequestClose;
+
+        [ObservableProperty]
+        private bool isPasswordVisible;
+
+        [RelayCommand]
+        private void TogglePasswordVisibility()
+        {
+            IsPasswordVisible = !IsPasswordVisible;
+        }
 
 
         [RelayCommand]
@@ -50,6 +60,5 @@ namespace BMS_Clone.ViewModels
         {
             Application.Current.Shutdown();
         }
-
     }
 }

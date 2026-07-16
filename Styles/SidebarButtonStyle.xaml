@@ -200,19 +200,17 @@
 
     </Style>
 
+
     <Style x:Key="LoginTextBoxStyle" TargetType="TextBox">
 
-        <Setter Property="Height" Value="70" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="#444444" />
         <Setter Property="BorderBrush" Value="#777777" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="10" />
+        <Setter Property="Padding" Value="10,0" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
 
-
         <Setter Property="Template">
-
             <Setter.Value>
 
                 <ControlTemplate TargetType="TextBox">
@@ -222,27 +220,27 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" />
+                        <Border Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
 
                     </Border>
 
                 </ControlTemplate>
 
             </Setter.Value>
-
         </Setter>
 
     </Style>
 
     <Style x:Key="LoginPasswordBoxStyle" TargetType="PasswordBox">
 
-        <Setter Property="Height" Value="40" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="#444444" />
         <Setter Property="BorderBrush" Value="#777777" />
-        <Setter Property="Padding" Value="10" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-
 
         <Setter Property="Template">
 
@@ -253,9 +251,11 @@
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1">
+                        BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" />
+                        <Border Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
 
                     </Border>
 

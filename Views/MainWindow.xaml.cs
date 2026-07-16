@@ -1,6 +1,5 @@
 ﻿using BMS_Clone.ViewModels;
 using BMS_Clone.Views.Dialog;
-using System.Timers;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
@@ -23,31 +22,24 @@ namespace BMS_Clone.Views
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new DispatcherTimer();
+            // Resize to the work area (doesn't cover the taskbar)
+            Rect workArea = SystemParameters.WorkArea;
 
-            timer.Interval = TimeSpan.FromSeconds(0.4);
+            Left = workArea.Left;
+            Top = workArea.Top;
+            Width = workArea.Width;
+            Height = workArea.Height;
+
+            isMaximized = true;
+
+            timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(0.4)
+            };
 
             timer.Tick += Timer_Tick;
-
             timer.Start();
         }
-
-
-        //private void Timer_Tick(object? sender, EventArgs e)
-        //{
-        //    timer.Stop();
-
-        //    ShowBlur();
-
-        //    LoginDialog loginDialog = new LoginDialog
-        //    {
-        //        Owner = this
-        //    };
-
-        //    loginDialog.ShowDialog();
-
-        //    HideBlur();
-        //}
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
@@ -61,36 +53,42 @@ namespace BMS_Clone.Views
             WindowState = WindowState.Minimized;
         }
 
+        private readonly double normalWidth = 1300;
+        private readonly double normalHeight = 800;
+
         private bool isMaximized = true;
-
-        private double normalWidth = 1100;
-        private double normalHeight = 700;
-
 
         private void Maximize_Click(object sender, RoutedEventArgs e)
         {
-            if (isMaximized)
+            if (!isMaximized)
             {
-                // Restore to custom size
+                // Maximize to the working area (keeps taskbar visible)
+                WindowState = WindowState.Normal;
+
+                Rect workArea = SystemParameters.WorkArea;
+
+                Left = workArea.Left;
+                Top = workArea.Top;
+                Width = workArea.Width;
+                Height = workArea.Height;
+
+                isMaximized = true;
+            }
+            else
+            {
+                // Restore to original size
                 WindowState = WindowState.Normal;
 
                 Width = normalWidth;
                 Height = normalHeight;
 
-                // Center window
                 Left = (SystemParameters.WorkArea.Width - Width) / 2;
                 Top = (SystemParameters.WorkArea.Height - Height) / 2;
 
                 isMaximized = false;
             }
-            else
-            {
-                // Maximize full screen
-                WindowState = WindowState.Maximized;
-
-                isMaximized = true;
-            }
         }
+
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

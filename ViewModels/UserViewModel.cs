@@ -1,97 +1,53 @@
 ﻿using BMS_Clone.Models;
+using BMS_Clone.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
-namespace BMS_Clone.ViewModels
+public partial class UserViewModel : ObservableObject
 {
-    public class UserViewModel : ObservableObject
+    private readonly ApiService _apiService = new();
+
+    public ObservableCollection<UserModel> Users { get; } = new();
+
+    [ObservableProperty]
+    private bool isLoading;
+
+
+    public UserViewModel()
     {
-        public ObservableCollection<UserModel> Users { get; set; } 
+        _ = LoadUsersAsync();
+    }
 
-        public UserViewModel()
+
+    [RelayCommand]
+    private async Task Refresh()
+    {
+        await LoadUsersAsync();
+    }
+
+
+    private async Task LoadUsersAsync()
+    {
+        IsLoading = true;
+
+        try
         {
-            Users = new ObservableCollection<UserModel>
+            // Test loading
+            await Task.Delay(3000);
+
+            var users = await _apiService.GetUsersAsync();
+
+            Users.Clear();
+
+            foreach (var user in users)
             {
-                new UserModel
-                {
-                    Id = 1,
-                    Username = "admin",
-                    Email = "admin@gmail.com",
-                    Role = "Admin"
-                },
-
-                new UserModel
-                {
-                    Id = 2,
-                    Username = "john",
-                    Email = "john@gmail.com",
-                    Role = "User"
-                },
-
-                new UserModel
-                {
-                    Id = 3,
-                    Username = "sarah",
-                    Email = "sarah@gmail.com",
-                    Role = "User"
-                },
-
-                new UserModel
-                {
-                    Id = 4,
-                    Username = "michael",
-                    Email = "michael@gmail.com",
-                    Role = "Manager"
-                },
-
-                new UserModel
-                {
-                    Id = 5,
-                    Username = "david",
-                    Email = "david@gmail.com",
-                    Role = "User"
-                },
-
-                new UserModel
-                {
-                    Id = 6,
-                    Username = "emma",
-                    Email = "emma@gmail.com",
-                    Role = "Admin"
-                },
-
-                new UserModel
-                {
-                    Id = 7,
-                    Username = "alex",
-                    Email = "alex@gmail.com",
-                    Role = "User"
-                },
-
-                new UserModel
-                {
-                    Id = 8,
-                    Username = "olivia",
-                    Email = "olivia@gmail.com",
-                    Role = "Manager"
-                },
-
-                new UserModel
-                {
-                    Id = 9,
-                    Username = "james",
-                    Email = "james@gmail.com",
-                    Role = "User"
-                },
-
-                new UserModel
-                {
-                    Id = 10,
-                    Username = "sophia",
-                    Email = "sophia@gmail.com",
-                    Role = "Admin"
-                }
-            };
+                Users.Add(user);
+            }
+        }
+        finally
+        {
+            IsLoading = false;
         }
     }
 }

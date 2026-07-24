@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace BMS_Clone.Views.Pages
 {
     /// <summary>
-    /// Interaction logic for TopUpHistoryView.xaml
+    /// Interaction logic for KiaView.xaml
     /// </summary>
-    public partial class TopUpHistoryView : UserControl
+    public partial class KiaView : UserControl
     {
-        public TopUpHistoryView()
+        public KiaView()
         {
             InitializeComponent();
         }

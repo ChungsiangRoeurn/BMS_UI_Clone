@@ -8,7 +8,13 @@ namespace BMS_Clone.ViewModels
 {
     public partial class LoginViewModel : ObservableObject
     {
-     
+        private readonly ApiService _apiService = new();
+
+        public event Action? LoginSuccess;
+
+        public event Action? RequestClose;
+
+
         [ObservableProperty]
         private string username = "";
 
@@ -18,10 +24,6 @@ namespace BMS_Clone.ViewModels
         [ObservableProperty]
         private string errorMessage = "";
 
-
-        public event Action? LoginSuccess;
-
-        public event Action? RequestClose;
 
         [ObservableProperty]
         private bool isPasswordVisible;
@@ -34,24 +36,25 @@ namespace BMS_Clone.ViewModels
 
 
         [RelayCommand]
-        private void Login()
+        private async Task Login()
         {
-            if (Username == "admin" &&
-               Password == "123")
+            var request = new LoginRequest
             {
+                Username = Username,
+                Password = Password
+            };
 
-                ToastService.Success(
-                    "Login successfully");
+            var result = await _apiService.LoginAsync(request);
 
+            if (result != null)
+            {
+                ToastService.Success($"Welcome {result.FirstName}");
 
                 LoginSuccess?.Invoke();
             }
             else
             {
-
-                ToastService.Error(
-                    "Wrong username or password");
-
+                ToastService.Error("Wrong username 0r password");
             }
         }
 

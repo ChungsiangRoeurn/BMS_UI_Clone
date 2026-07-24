@@ -12,13 +12,39 @@
 
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <Compile Remove="Assets\Gemini_Generated_Image_5vbv515vbv515vbv.png\**" />
+    <EmbeddedResource Remove="Assets\Gemini_Generated_Image_5vbv515vbv515vbv.png\**" />
+    <None Remove="Assets\Gemini_Generated_Image_5vbv515vbv515vbv.png\**" />
+    <Page Remove="Assets\Gemini_Generated_Image_5vbv515vbv515vbv.png\**" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="6.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Resource Include="Assets\tesla_blue.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\tesla_black.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\tesla_yellow.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\tesla_white.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\tesla_red.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

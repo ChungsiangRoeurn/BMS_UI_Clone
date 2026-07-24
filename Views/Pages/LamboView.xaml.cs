@@ -1,5 +1,4 @@
-﻿using BMS_Clone.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,18 +15,14 @@ using System.Windows.Shapes;
 
 namespace BMS_Clone.Views.Pages
 {
-
-    public partial class MoniMeterView : UserControl
+    /// <summary>
+    /// Interaction logic for LamboView.xaml
+    /// </summary>
+    public partial class LamboView : UserControl
     {
-        public MoniMeterView()
+        public LamboView()
         {
             InitializeComponent();
-            DataContext = new UserViewModel();
-        }
-
-        private void DataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
-        {
-
         }
     }
 }

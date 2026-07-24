@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="BMS_Clone.Views.Controls.LoadingControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Background="#88000000">
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <!--  Spinner  -->
+            <Viewbox Width="60" Height="60">
+                <Canvas Width="100" Height="100">
+
+                    <Ellipse
+                        Canvas.Left="15"
+                        Canvas.Top="15"
+                        Width="70"
+                        Height="70"
+                        Stroke="White"
+                        StrokeDashArray="1"
+                        StrokeThickness="10">
+
+                        <Ellipse.RenderTransform>
+                            <RotateTransform CenterX="35" CenterY="35" />
+                        </Ellipse.RenderTransform>
+
+                        <Ellipse.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="RenderTransform.Angle"
+                                            From="0"
+                                            To="360"
+                                            Duration="0:0:0.8" />
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Ellipse.Triggers>
+
+                    </Ellipse>
+
+                </Canvas>
+            </Viewbox>
+
+            <TextBlock
+                Margin="0,15,0,0"
+                HorizontalAlignment="Center"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Foreground="White"
+                Text="Loading..." />
+
+        </StackPanel>
+
+    </Grid>
+
+</UserControl>

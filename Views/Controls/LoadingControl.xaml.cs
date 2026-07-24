@@ -1,5 +1,4 @@
-﻿using BMS_Clone.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BMS_Clone.Views.Pages
+namespace BMS_Clone.Views.Controls
 {
-
-    public partial class MoniMeterView : UserControl
+    /// <summary>
+    /// Interaction logic for LoadingControl.xaml
+    /// </summary>
+    public partial class LoadingControl : UserControl
     {
-        public MoniMeterView()
+        public LoadingControl()
         {
             InitializeComponent();
-            DataContext = new UserViewModel();
-        }
-
-        private void DataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
-        {
-
         }
     }
 }

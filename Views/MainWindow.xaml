@@ -2,6 +2,7 @@
     x:Class="BMS_Clone.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:BMS_Clone.Views.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:viewmodels="clr-namespace:BMS_Clone.ViewModels"
@@ -189,7 +190,7 @@
 
 
                                 <!--  Alarm Event  -->
-                                <Button Style="{StaticResource SidebarButtonStyle}">
+                                <Button Command="{Binding GoAlarmEventCommand}" Style="{StaticResource SidebarButtonStyle}">
                                     <StackPanel Orientation="Horizontal">
                                         <iconPacks:PackIconMaterial
                                             Width="22"
@@ -204,7 +205,7 @@
                                 </Button>
 
                                 <!--  Notification  -->
-                                <Button Style="{StaticResource SidebarButtonStyle}">
+                                <Button Command="{Binding GoNotificationCommand}" Style="{StaticResource SidebarButtonStyle}">
                                     <StackPanel Orientation="Horizontal">
                                         <iconPacks:PackIconMaterial
                                             Width="22"
@@ -219,7 +220,7 @@
                                 </Button>
 
                                 <!--  Notification Events  -->
-                                <Button Style="{StaticResource SidebarButtonStyle}">
+                                <Button Command="{Binding GoNotificationEventCommand}" Style="{StaticResource SidebarButtonStyle}">
                                     <StackPanel Orientation="Horizontal">
                                         <iconPacks:PackIconMaterial
                                             Width="22"
@@ -234,7 +235,7 @@
                                 </Button>
 
                                 <!--  Consumptions  -->
-                                <Button Style="{StaticResource SidebarButtonStyle}">
+                                <Button Command="{Binding GoConsumptionCommand}" Style="{StaticResource SidebarButtonStyle}">
                                     <StackPanel Orientation="Horizontal">
                                         <iconPacks:PackIconMaterial
                                             Width="22"
@@ -249,7 +250,7 @@
                                 </Button>
 
                                 <!--  Monitor Controller  -->
-                                <Button Style="{StaticResource SidebarButtonStyle}">
+                                <Button Command="{Binding GoMonitorControllerCommand}" Style="{StaticResource SidebarButtonStyle}">
                                     <StackPanel Orientation="Horizontal">
                                         <iconPacks:PackIconMaterial
                                             Width="22"
@@ -264,7 +265,7 @@
                                 </Button>
 
                                 <!--  User Log  -->
-                                <Button Style="{StaticResource SidebarButtonStyle}">
+                                <Button Command="{Binding GoUserLogCommand}" Style="{StaticResource SidebarButtonStyle}">
                                     <StackPanel Orientation="Horizontal">
                                         <iconPacks:PackIconMaterial
                                             Width="22"
@@ -396,8 +397,48 @@
                         </Menu>
 
                         <Grid x:Name="MainContent">
-                            <ContentControl Content="{Binding CurrentView}" />
+
+                            <TabControl
+                                Background="Transparent"
+                                BorderThickness="0"
+                                ItemsSource="{Binding Tabs}"
+                                SelectedItem="{Binding SelectedTab, Mode=TwoWay}">
+
+                                <TabControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Header}" />
+
+
+                                            <Button
+                                                Margin="12,0,0,0"
+                                                Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource AncestorType=TabControl}}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource CloseTabButtonStyle}">
+
+                                                <iconPacks:PackIconMaterial
+                                                    Width="12"
+                                                    Height="12"
+                                                    Kind="Close" />
+
+                                            </Button>
+
+                                        </StackPanel>
+
+                                    </DataTemplate>
+                                </TabControl.ItemTemplate>
+
+                                <TabControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <ContentControl Content="{Binding Content}" />
+                                    </DataTemplate>
+                                </TabControl.ContentTemplate>
+
+                            </TabControl>
                         </Grid>
+
+
                     </DockPanel>
                 </Border>
 

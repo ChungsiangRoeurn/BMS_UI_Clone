@@ -51,5 +51,10 @@ namespace BMS_Clone.Views.Dialog
             DialogResult = true;
             Close();
         }
+
+        private void PasswordBox_PasswordChanged_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

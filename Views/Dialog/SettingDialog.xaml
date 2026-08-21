@@ -122,7 +122,7 @@
                                 Foreground="#888888"
                                 IsHitTestVisible="False"
                                 Text="Search"
-                                Visibility="{Binding SearchText, Converter={StaticResource StringEmptyToVisibilityConverter}}" />
+                                Visibility="{Binding SearchText, Converter={StaticResource BoolToVisibility}}" />
 
                         </Grid>
 
@@ -160,23 +160,17 @@
                 <Grid Grid.Column="1" Margin="15,10,15,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
-                        <!--  Scrollable Form Fields  -->
                         <RowDefinition Height="Auto" />
-                        <!--  Note Field  -->
                         <RowDefinition Height="Auto" />
-                        <!--  Bottom Buttons  -->
                     </Grid.RowDefinitions>
 
 
                     <Grid Grid.Row="2" Margin="0,5,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <!--  Toggle Switch  -->
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
-                            <!--  Close Button  -->
                             <ColumnDefinition Width="Auto" />
-                            <!--  Update Button  -->
                         </Grid.ColumnDefinitions>
 
                         <StackPanel

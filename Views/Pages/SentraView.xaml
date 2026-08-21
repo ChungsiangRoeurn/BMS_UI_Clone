@@ -77,23 +77,18 @@
                 CornerRadius="10">
 
                 <Border
-                    Width="220"
                     Padding="16"
                     Background="#2D2D30"
                     BorderBrush="#3F3F46"
                     BorderThickness="1"
                     CornerRadius="12"
                     Effect="{DynamicResource DropShadowEffect}">
-                    <!--  Optional: Adds depth  -->
 
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <!--  Fits text perfectly  -->
                             <RowDefinition Height="Auto" />
-                            <!--  Fits icon perfectly  -->
                             <RowDefinition Height="Auto" />
-                            <!--  Fits button perfectly  -->
                         </Grid.RowDefinitions>
 
                         <!--  Title  -->

@@ -41,7 +41,7 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <!--  Left Indicator  -->
+                            <!--  left  -->
                             <Border
                                 x:Name="Indicator"
                                 Width="2.5"
@@ -50,7 +50,7 @@
                                 Background="Transparent" />
 
 
-                            <!--  Content  -->
+                            <!--  content  -->
                             <ContentPresenter
                                 Grid.Column="1"
                                 Margin="15,0"
@@ -172,7 +172,7 @@
             <!--  Hover  -->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#505050" />
-                <Setter Property="Foreground" Value="FloralWhite" />
+
             </Trigger>
 
 

@@ -1,5 +1,6 @@
 ﻿using BMS_Clone.Models;
 using BMS_Clone.ViewModels;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -23,6 +24,8 @@ public class ApiService
     {
         var json = await _httpClient.GetStringAsync("/users");
 
+        Debug.WriteLine(json);
+
         var options = new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
@@ -35,9 +38,16 @@ public class ApiService
 
     public async Task<List<ProductModel>> GetProductsAsync()
     {
-        var res = await _httpClient.GetFromJsonAsync<ProductResponse>("products");
-
-        return res?.Products ?? new List<ProductModel> ();
+        try
+        {
+            var res = await _httpClient.GetFromJsonAsync<ProductResponse>("/products");
+            return res?.Products ?? new List<ProductModel>();
+        }
+        catch(Exception ex)
+        {
+            Debug.WriteLine($"GetProductsAsync error: {ex}");
+            return new List<ProductModel>();
+        }   
     }
 
     public async Task<List<ProductModel>> SearchProductAsync(string keyword)
@@ -51,7 +61,7 @@ public class ApiService
 
     public async Task<LoginResponse?> LoginAsync(LoginRequest request)
     {
-        var response = await _httpClient.PostAsJsonAsync("auth/login", request);
+        var response = await _httpClient.PostAsJsonAsync("/auth/login", request);
 
         if (!response.IsSuccessStatusCode)
             return null;

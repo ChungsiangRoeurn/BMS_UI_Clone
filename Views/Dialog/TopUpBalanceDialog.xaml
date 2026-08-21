@@ -9,7 +9,7 @@
     Width="650"
     Height="600"
     Background="Transparent"
-    WindowStartupLocation="CenterScreen"
+    WindowStartupLocation="CenterOwner"
     WindowStyle="None"
     mc:Ignorable="d">
 

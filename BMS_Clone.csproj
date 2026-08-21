@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
 	  
-	  	<ApplicationIcon>Assets\BMS.ico</ApplicationIcon>
+	  	<ApplicationIcon>Assets/logo.ico</ApplicationIcon>
 
   </PropertyGroup>
 
@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\logo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\tesla_blue.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

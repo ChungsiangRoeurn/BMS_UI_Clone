@@ -1,6 +1,7 @@
 ﻿using BMS_Clone.ViewModels;
 using BMS_Clone.Views.Dialog;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Threading;
@@ -154,6 +155,14 @@ namespace BMS_Clone.Views
             loginDialog.ShowDialog();
 
             HideBlur();
+        }
+
+        private void Header_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }

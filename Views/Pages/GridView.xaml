@@ -7,8 +7,6 @@
     xmlns:local="clr-namespace:BMS_Clone.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:BMS_Clone.ViewModels"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     Background="#252525"
     mc:Ignorable="d">
 
@@ -115,12 +113,9 @@
 
                                 </StackPanel>
 
-
-
                             </Grid>
 
                         </Border>
-                        <!--  Information  -->
 
                         <Border
                             Grid.Column="2"
@@ -440,7 +435,6 @@
 
                         </Border>
 
-                        <!--  Profile  -->
                         <Grid Grid.Column="3" Width="100">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />

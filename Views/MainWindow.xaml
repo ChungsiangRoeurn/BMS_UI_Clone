@@ -8,12 +8,15 @@
     xmlns:viewmodels="clr-namespace:BMS_Clone.ViewModels"
     Width="1300"
     Height="800"
-    Background="#261F1F"
+    Background="White"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None">
 
-    <Border BorderBrush="Yellow" BorderThickness="0.5">
+    <Border
+        BorderBrush="Yellow"
+        BorderThickness="0.5"
+        MouseDown="Header_MouseDown">
 
         <Grid>
 
@@ -188,7 +191,6 @@
                                     </StackPanel>
                                 </Button>
 
-
                                 <!--  Alarm Event  -->
                                 <Button Command="{Binding GoAlarmEventCommand}" Style="{StaticResource SidebarButtonStyle}">
                                     <StackPanel Orientation="Horizontal">
@@ -306,13 +308,11 @@
                 <!--  Content Area  -->
                 <Border Grid.Column="1" Background="#303030">
                     <Border.Resources>
-                        <!--  Style for the main Menu bar background  -->
                         <Style TargetType="Menu">
                             <Setter Property="Background" Value="#252525" />
                             <Setter Property="Foreground" Value="White" />
                         </Style>
 
-                        <!--  Style to center text and color all MenuItems  -->
                         <Style TargetType="MenuItem">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -511,7 +511,6 @@
                             Foreground="White"
                             Kind="Close" />
                     </Button>
-
 
                 </Grid>
 

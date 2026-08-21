@@ -1,4 +1,5 @@
 ﻿using BMS_Clone.Models;
+using BMS_Clone.Services;
 using BMS_Clone.Views;
 using BMS_Clone.Views.Dialog;
 using BMS_Clone.Views.Pages;
@@ -22,6 +23,7 @@ namespace BMS_Clone.ViewModels
         private readonly NotificationView notificationView = new NotificationView();
         private readonly UserLogView userLogView = new UserLogView();
         private readonly MonitorControllerView monitorControllerView = new MonitorControllerView();
+        private readonly ProfileCard profileCardView = new ProfileCard();
 
         [ObservableProperty]
         private TabItemModel selectedTab;
@@ -210,6 +212,7 @@ namespace BMS_Clone.ViewModels
                 monitorControllerView
                 ));
         }
+
 
         [RelayCommand]
         private void OpenSetting()

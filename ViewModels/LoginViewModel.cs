@@ -12,7 +12,7 @@ namespace BMS_Clone.ViewModels
 
         public event Action? LoginSuccess;
 
-        public event Action? RequestClose;
+        //public event Action? RequestClose;
 
 
         [ObservableProperty]

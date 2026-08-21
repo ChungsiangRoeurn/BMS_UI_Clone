@@ -4,6 +4,7 @@ using BMS_Clone.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 
 namespace BMS_Clone.ViewModels
@@ -32,15 +33,38 @@ namespace BMS_Clone.ViewModels
             _ = LoadProductsAsync();
         }
 
+        private void LINQ()
+        {
+            var result = Products
+            .Where(x => x.Price > 20)
+            .ToList();
+
+            foreach (var product in result)
+            {
+                Debug.WriteLine(product.Title);
+            }
+        }
+
         private async Task LoadProductsAsync()
         {
-            var result = await _apiService.GetProductsAsync();
-
-            Products.Clear();
-
-            foreach(var product in result)
+            try
             {
-                Products.Add(product);
+                var result = await _apiService.GetProductsAsync();
+
+                Debug.WriteLine($"Fetched {result?.Count ?? 0} products.");
+
+                Products.Clear();
+
+                if (result == null) return;
+
+                foreach (var product in result)
+                {
+                    Products.Add(product);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"LoadProductsAsync failed: {ex}");
             }
         }
 

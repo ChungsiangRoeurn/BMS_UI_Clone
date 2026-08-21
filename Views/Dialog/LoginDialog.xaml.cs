@@ -14,7 +14,7 @@ namespace BMS_Clone.Views.Dialog
             var vm = new LoginViewModel();
 
             vm.LoginSuccess += OnLoginSuccess;
-            vm.RequestClose += () => Close();
+            //vm.RequestClose += () => Close();
 
             DataContext = vm;
 
